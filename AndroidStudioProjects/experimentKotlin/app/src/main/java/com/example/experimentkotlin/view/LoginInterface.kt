@@ -1,7 +1,5 @@
 package com.example.experimentkotlin.view
 
-import android.R.attr.text
-import android.widget.TextView
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -11,7 +9,6 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -22,10 +19,11 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 
 @Composable
 
-fun Interface(modifier: Modifier = Modifier){
+fun Interface(navController: NavController, modifier: Modifier = Modifier){
 
     val context = LocalContext
 
@@ -72,7 +70,7 @@ fun Interface(modifier: Modifier = Modifier){
             ) { Text("Continuar")}
 
         Button(
-            onClick = {},
+            onClick = {navController.navigate("createUser")},
             modifier = modifier.fillMaxWidth(),
         ) { Text("Crear Cuenta")}
 
