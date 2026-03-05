@@ -1,78 +1,61 @@
 package com.example.experimentkotlin.view.auth.login
 
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.experimentkotlin.R
 
+@Preview
 @Composable
 
-fun LoginScreen(){
+fun LoginScreen() {
+    Scaffold() { padding ->
 
-    val context = LocalContext
+        var email by remember { mutableStateOf("") }
+        var password by remember { mutableStateOf("") }
 
-    var user by remember{mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
+        Column(
+            Modifier
+                .padding(padding)
+                .fillMaxSize()
+                .background(Color.White)
+        ) {
+            Text("Español (España)")
+            Image(
+                modifier = Modifier.size(125.dp),
+                painter = painterResource(R.drawable.ic_launcher_background),
+                contentDescription = "ExperimentKotlin"
+            )
+            TextField(value = email, onValueChange = {email = it})
+            TextField(value = password, onValueChange = {password = it})
 
-
-    Column(
-        modifier = modifier
-            .fillMaxSize()
-            .padding(16.dp),
-        verticalArrangement = Arrangement.spacedBy(16.dp)) {
-
-        Text(
-            text = "Registro de Usuario",
-            style = MaterialTheme.typography.headlineMedium,
-            modifier = modifier.fillMaxWidth(),
-            textAlign = TextAlign.Center
-        )
-        Text(
-            text = "Crea tu cuenta para empezar a utilizar la plataforma",
-            style = MaterialTheme.typography.bodyMedium,
-            modifier = modifier.fillMaxWidth(),
-            textAlign = TextAlign.Center
-        )
-
-        OutlinedTextField(
-            value = user,
-            onValueChange = { user = it },
-            label = {Text("Usuario")},
-            modifier = modifier.fillMaxWidth()
-        )
-
-        OutlinedTextField(
-            value = password,
-            onValueChange = { password = it },
-            label = {Text("Contraseña")},
-            modifier = modifier.fillMaxWidth()
-        )
-
-        Button(
-            onClick = {},
-            modifier = modifier.fillMaxWidth(),
-        ) { Text("Continuar")}
-
-        Button(
-            onClick = {navController.navigate("createUser")},
-            modifier = modifier.fillMaxWidth(),
-        ) { Text("Crear Cuenta")}
+        }
 
 
     }
+}
