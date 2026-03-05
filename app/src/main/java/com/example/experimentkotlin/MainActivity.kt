@@ -19,24 +19,6 @@ class MainActivity : ComponentActivity() {
 
                 NavigationWrapper()
 
-
-/*Scaffold( modifier = Modifier.fillMaxSize() ) { innerPadding ->
-
-                    NavHost(
-                        navController = navController,
-                        startDestination = "login",
-                        modifier = Modifier.padding(innerPadding)
-                    ){
-                        composable("login"){
-                            Interface(navController)
-                        }
-                        composable("createUser"){
-                            CreateUser(navController)
-                        }
-
-                    }
-                }
-                */
             }
         }
     }
