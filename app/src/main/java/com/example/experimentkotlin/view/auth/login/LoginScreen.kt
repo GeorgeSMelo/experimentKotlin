@@ -25,6 +25,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -50,7 +51,7 @@ fun LoginScreen(loginViewModel: LoginViewModel = viewModel()) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             ExperimentTextBody(
-                text = "Español (España)",
+                text = stringResource(R.string.login_screen_header_text_spain),
                 modifier = Modifier.padding(top = 22.dp)
             )
             Spacer(Modifier.weight(1f))
@@ -66,7 +67,7 @@ fun LoginScreen(loginViewModel: LoginViewModel = viewModel()) {
                 value = uiState.email,
                 label = {
                     ExperimentTextBody(
-                        text = "Usuario, correo electronico o móvil",
+                        text = stringResource(R.string.login_screen_textfield_email),
                     )
                 },
                 onValueChange = { loginViewModel.onEmailChanged(it) })
@@ -77,20 +78,20 @@ fun LoginScreen(loginViewModel: LoginViewModel = viewModel()) {
                 value = uiState.password,
                 label = {
                     ExperimentTextBody(
-                        text = "Contraseña",
+                        text = stringResource(R.string.login_screen_textfield_password),
                     )
                 },
                 onValueChange = { loginViewModel.onPasswordChanged(it) })
             Spacer(Modifier.height(8.dp))
             ExperimentButton(
                 modifier = Modifier.fillMaxWidth(),
-                text = "Iniciar sesión",
+                text = stringResource(R.string.login_screen_button_login),
                 onClick = {},
                 enabled = uiState.isLoginEnable,
             )
             TextButton(onClick = { }) {
                 ExperimentTextBody(
-                    text = "¿Has olvidado la contraseña?",
+                    text = stringResource(R.string.login_screen_text_forgot_password),
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
@@ -100,7 +101,7 @@ fun LoginScreen(loginViewModel: LoginViewModel = viewModel()) {
                 onClick = {}, border = BorderStroke(1.dp, MaterialTheme.colorScheme.primary)
             ) {
                 ExperimentTextBody(
-                    text = "Crear cuenta nueva",
+                    text = stringResource(R.string.login_screen_button_register),
                     color = MaterialTheme.colorScheme.primary
                 )
             }

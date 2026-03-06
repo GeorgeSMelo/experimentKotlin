@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">experimentKotlin</string>
+
+    <!-- Login screen -->
+    <string name="login_screen_header_text_spain">Español (España)</string>
+    <string name="login_screen_textfield_email">Usuario, correo electronico o móvil</string>
+    <string name="login_screen_textfield_password">Contraseña</string>
+    <string name="login_screen_button_login">Iniciar sesión</string>
+    <string name="login_screen_text_forgot_password">¿Has olvidado la contraseña?</string>
+    <string name="login_screen_button_register">Crear cuenta nueva</string>
+    <!-- Register screen -->
+    <string name="register_screen_title_phone">¿Cual es tu numero Móvil?</string>
+    <string name="register_screen_title_email">¿Cual es tu correo electrónico?</string>
+    <string name="register_screen_subtitle_phone">Introduce tu movil de contacto. nadie lo vera en tu perfil</string>
+    <string name="register_screen_subtitle_email">Introduce tu correo electronico. nadie lo vera en tu perfil</string>
+    <string name="register_screen_body">Puedes que recibas notificaciones nuestras en Whatsapp y por SMS</string>
+    <string name="register_screen_textfield_register_phone">Número movil</string>
+    <string name="register_screen_textfield_register_email">Correo Electronico</string>
+    <string name="register_screen_button_next">Siguiente</string>
+    <string name="register_screen_register_with_phone">Registrate con tu numeero de movil</string>
+    <string name="register_screen_register_with_email">Resgistrate con tu email</string>
+    <string name="register_screen_text_find_my_account">Buscar mi cuenta</string>
+
 </resources>
