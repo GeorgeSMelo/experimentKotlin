@@ -19,7 +19,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -31,6 +30,8 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.experimentkotlin.R
+import com.example.experimentkotlin.view.core.components.ExperimentButton
+import com.example.experimentkotlin.view.core.components.ExperimentTextBody
 
 @Preview
 @Composable
@@ -48,9 +49,8 @@ fun LoginScreen(loginViewModel: LoginViewModel = viewModel()) {
 
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(
-                "Español (España)",
-                color = MaterialTheme.colorScheme.onBackground,
+            ExperimentTextBody(
+                text = "Español (España)",
                 modifier = Modifier.padding(top = 22.dp)
             )
             Spacer(Modifier.weight(1f))
@@ -64,33 +64,46 @@ fun LoginScreen(loginViewModel: LoginViewModel = viewModel()) {
                 modifier = Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(30),
                 value = uiState.email,
-                label = { Text("Usuario, correo electronico o móvil", color = MaterialTheme.colorScheme.onBackground) },
+                label = {
+                    ExperimentTextBody(
+                        text = "Usuario, correo electronico o móvil",
+                    )
+                },
                 onValueChange = { loginViewModel.onEmailChanged(it) })
             Spacer(Modifier.height(12.dp))
             OutlinedTextField(
                 modifier = Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(30),
                 value = uiState.password,
-                label = { Text("Contraseña", color = MaterialTheme.colorScheme.onBackground) },
+                label = {
+                    ExperimentTextBody(
+                        text = "Contraseña",
+                    )
+                },
                 onValueChange = { loginViewModel.onPasswordChanged(it) })
             Spacer(Modifier.height(8.dp))
-            Button(
+            ExperimentButton(
                 modifier = Modifier.fillMaxWidth(),
-                colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary),
+                text = "Iniciar sesión",
                 onClick = {},
                 enabled = uiState.isLoginEnable,
-                shape = MaterialTheme.shapes.extraLarge
-            ) {
-                Text(
-                    modifier = Modifier.padding(vertical = 4.dp),
-                    text = "Iniciar sesión",color = MaterialTheme.colorScheme.onPrimary
+            )
+            TextButton(onClick = { }) {
+                ExperimentTextBody(
+                    text = "¿Has olvidado la contraseña?",
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
-            TextButton(onClick = { }) { Text("¿Has olvidado la contraseña?", color = MaterialTheme.colorScheme.onSurfaceVariant) }
             Spacer(Modifier.weight(1f))
             OutlinedButton(
                 modifier = Modifier.fillMaxWidth(),
-                onClick = {}, border = BorderStroke(1.dp, MaterialTheme.colorScheme.primary)) { Text("Crear cuenta nueva",  color = MaterialTheme.colorScheme.primary) }
+                onClick = {}, border = BorderStroke(1.dp, MaterialTheme.colorScheme.primary)
+            ) {
+                ExperimentTextBody(
+                    text = "Crear cuenta nueva",
+                    color = MaterialTheme.colorScheme.primary
+                )
+            }
             Icon(
                 modifier = Modifier
                     .width(60.dp)
