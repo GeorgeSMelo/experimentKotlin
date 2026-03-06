@@ -1,6 +1,5 @@
 package com.example.experimentkotlin.ui.theme
 
-import android.hardware.lights.Light
 import androidx.compose.ui.graphics.Color
 
 val Purple80 = Color(0xFFD0BCFF)
@@ -13,8 +12,8 @@ val Pink40 = Color(0xFF7D5260)
 
 //ExperimentKotlin
 
-val ExperimentkBlue = Color(0x0B5FD5FF)
-val ExperimentkLight = Color(0xF3FFFFFF)
+val ExperimentkBlue = Color(0xFF0B5FD5)
+
 val Gray20 = Color(0xFF152125)
 val Gray70 = Color(0xFF8EA0B0)
 
