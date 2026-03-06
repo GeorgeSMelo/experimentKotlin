@@ -1,8 +1,9 @@
 # experimentKotlin
 Este es un proyecto personal que va a ser publico para todo el mundo y si llega el caso pueden utilizarlo para implementarlos en sus trabajos.
 
-#  Metas que quiero implementar en este proyecto. (Estos se veran marcado en 4 fases al lado de cada uno Completado, En Proceso, Terminado y Futura implementación.
+#  Metas que quiero implementar en este proyecto. 
 
+(Estos se veran marcado en 4 fases al lado de cada uno Completado, En Proceso, Terminado y Futura implementación.)
 - Interfaz para creación de usuario. (En proceso)
 - Creación de usuario por google, facebook, likedin. (Futura Actualización)
 - Boton de cerrar sesión. (En proceso).
