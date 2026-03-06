@@ -1,5 +1,6 @@
 package com.example.experimentkotlin.view.auth.login
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -14,6 +15,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
@@ -40,7 +42,7 @@ fun LoginScreen(loginViewModel: LoginViewModel = viewModel()) {
 
         Column(
             Modifier
-                .background(Color.White)
+                .background(MaterialTheme.colorScheme.background)
                 .padding(padding)
                 .padding(horizontal = 20.dp)
                 .fillMaxSize(),
@@ -49,7 +51,7 @@ fun LoginScreen(loginViewModel: LoginViewModel = viewModel()) {
         ) {
             Text(
                 "Español (España)",
-                color = Color.Gray,
+                color = MaterialTheme.colorScheme.onBackground,
                 modifier = Modifier.padding(top = 22.dp)
             )
             Spacer(Modifier.weight(1f))
@@ -63,39 +65,39 @@ fun LoginScreen(loginViewModel: LoginViewModel = viewModel()) {
                 modifier = Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(30),
                 value = uiState.email,
-                label = { Text("Usuario, correo electronico o móvil") },
+                label = { Text("Usuario, correo electronico o móvil", color = MaterialTheme.colorScheme.onBackground) },
                 onValueChange = { loginViewModel.onEmailChanged(it) })
             Spacer(Modifier.height(12.dp))
             OutlinedTextField(
                 modifier = Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(30),
                 value = uiState.password,
-                label = { Text("Contraseña") },
+                label = { Text("Contraseña", color = MaterialTheme.colorScheme.onBackground) },
                 onValueChange = { loginViewModel.onPasswordChanged(it) })
             Spacer(Modifier.height(8.dp))
             Button(
                 modifier = Modifier.fillMaxWidth(),
-                colors = ButtonDefaults.buttonColors(containerColor = Color.Blue),
+                colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary),
                 onClick = {},
                 enabled = uiState.isLoginEnable
             ) {
                 Text(
                     modifier = Modifier.padding(vertical = 4.dp),
-                    text = "Iniciar sesión",
+                    text = "Iniciar sesión",color = MaterialTheme.colorScheme.onPrimary
                 )
             }
-            TextButton(onClick = { }) { Text("¿Has olvidado la contraseña?") }
+            TextButton(onClick = { }) { Text("¿Has olvidado la contraseña?", color = MaterialTheme.colorScheme.onSurfaceVariant) }
             Spacer(Modifier.weight(1f))
             OutlinedButton(
                 modifier = Modifier.fillMaxWidth(),
-                onClick = {}) { Text("Crear cuenta nueva") }
+                onClick = {}, border = BorderStroke(1.dp, MaterialTheme.colorScheme.primary)) { Text("Crear cuenta nueva",  color = MaterialTheme.colorScheme.primary) }
             Icon(
                 modifier = Modifier
                     .width(60.dp)
                     .padding(vertical = 24.dp),
                 painter = painterResource(R.drawable.ic_launcher_foreground),
                 contentDescription = "Logo",
-                tint = Color.Black
+                tint = MaterialTheme.colorScheme.onBackground
             )
 
         }
