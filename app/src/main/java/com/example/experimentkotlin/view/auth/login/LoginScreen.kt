@@ -33,6 +33,9 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.experimentkotlin.R
 import com.example.experimentkotlin.view.core.components.ExperimentButton
 import com.example.experimentkotlin.view.core.components.ExperimentTextBody
+import com.example.experimentkotlin.view.core.components.ExperimentTextField
+import com.example.experimentkotlin.view.core.components.ExperimentButtonSecondary
+
 
 @Preview
 @Composable
@@ -61,26 +64,18 @@ fun LoginScreen(loginViewModel: LoginViewModel = viewModel()) {
                 contentDescription = "ExperimentKotlin"
             )
             Spacer(Modifier.weight(1.3f))
-            OutlinedTextField(
+            ExperimentTextField(
                 modifier = Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(30),
                 value = uiState.email,
-                label = {
-                    ExperimentTextBody(
-                        text = stringResource(R.string.login_screen_textfield_email),
-                    )
-                },
+                label = stringResource(R.string.login_screen_textfield_email),
                 onValueChange = { loginViewModel.onEmailChanged(it) })
             Spacer(Modifier.height(12.dp))
-            OutlinedTextField(
+            ExperimentTextField(
                 modifier = Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(30),
                 value = uiState.password,
-                label = {
-                    ExperimentTextBody(
-                        text = stringResource(R.string.login_screen_textfield_password),
-                    )
-                },
+                label = stringResource(R.string.login_screen_textfield_password),
                 onValueChange = { loginViewModel.onPasswordChanged(it) })
             Spacer(Modifier.height(8.dp))
             ExperimentButton(
@@ -96,15 +91,11 @@ fun LoginScreen(loginViewModel: LoginViewModel = viewModel()) {
                 )
             }
             Spacer(Modifier.weight(1f))
-            OutlinedButton(
+            ExperimentButtonSecondary(
                 modifier = Modifier.fillMaxWidth(),
-                onClick = {}, border = BorderStroke(1.dp, MaterialTheme.colorScheme.primary)
-            ) {
-                ExperimentTextBody(
-                    text = stringResource(R.string.login_screen_button_register),
-                    color = MaterialTheme.colorScheme.primary
-                )
-            }
+                onClick = {},
+                title = stringResource(R.string.login_screen_button_register)
+            )
             Icon(
                 modifier = Modifier
                     .width(60.dp)

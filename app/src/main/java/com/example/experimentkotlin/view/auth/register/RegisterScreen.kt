@@ -1,0 +1,105 @@
+package com.example.experimentkotlin.view.auth.register
+
+
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.experimentkotlin.R
+import com.example.experimentkotlin.view.core.components.ExperimentButton
+import com.example.experimentkotlin.view.core.components.ExperimentButtonSecondary
+import com.example.experimentkotlin.view.core.components.ExperimentTextBody
+import com.example.experimentkotlin.view.core.components.ExperimentTextField
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Preview
+@Composable
+fun RegisterScreen(registerViewModel: RegisterViewModel = viewModel()) {
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.background
+                ),
+                title = {},
+                navigationIcon = {
+                    Icon(
+                        imageVector = Icons.Default.ArrowBack,
+                        contentDescription = "back",
+                        tint = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+
+                }
+            )
+
+        }
+    ) { paddingValues ->
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier
+                .padding(paddingValues)
+                .padding(horizontal = 16.dp)
+                .background(MaterialTheme.colorScheme.background)
+        ) {
+            ExperimentTextBody(
+                text = stringResource(R.string.register_screen_title_phone),
+                style = MaterialTheme.typography.headlineLarge,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+            Spacer(Modifier.height(4.dp))
+            ExperimentTextBody(
+                text = stringResource(R.string.register_screen_subtitle_phone),
+                style = MaterialTheme.typography.titleSmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+            Spacer(Modifier.height(16.dp))
+            ExperimentTextField(
+                modifier = Modifier.fillMaxWidth(),
+                value = "",
+                onValueChange = {},
+                label = stringResource(R.string.register_screen_textfield_register_phone)
+            )
+            Spacer(Modifier.height(12.dp))
+            ExperimentTextBody(stringResource(R.string.register_screen_body))
+            Spacer(Modifier.height(12.dp))
+            ExperimentButton(
+                modifier = Modifier.fillMaxWidth(),
+                onClick = {},
+                text = stringResource(R.string.register_screen_button_next)
+            )
+            Spacer(Modifier.height(4.dp))
+            ExperimentButtonSecondary(
+                modifier = Modifier.fillMaxWidth(),
+                onClick = {},
+                title = stringResource(R.string.register_screen_register_with_email),
+                titleColor = MaterialTheme.colorScheme.onPrimary,
+                border = BorderStroke(1.dp, MaterialTheme.colorScheme.onBackground)
+            )
+            Spacer(Modifier.weight(1f))
+            ExperimentTextBody(
+                    modifier = Modifier.padding(4.dp),
+                    text = stringResource(R.string.register_screen_text_find_my_account),
+                    color = MaterialTheme.colorScheme.primary
+                )
+        }
+    }
+
+}

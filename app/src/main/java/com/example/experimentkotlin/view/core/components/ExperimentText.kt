@@ -9,8 +9,8 @@ import androidx.compose.ui.text.TextStyle
 
 @Composable
 fun ExperimentTextBody(
-    modifier: Modifier = Modifier,
     text: String,
+    modifier: Modifier = Modifier,
     color: Color = MaterialTheme.colorScheme.onBackground,
     style: TextStyle = MaterialTheme.typography.bodyLarge
 ) {
