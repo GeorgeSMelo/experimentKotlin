@@ -1,6 +1,5 @@
 package com.example.experimentkotlin.view.auth.login
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -12,12 +11,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedButton
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -32,9 +27,9 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.experimentkotlin.R
 import com.example.experimentkotlin.view.core.components.ExperimentButton
+import com.example.experimentkotlin.view.core.components.ExperimentButtonSecondary
 import com.example.experimentkotlin.view.core.components.ExperimentTextBody
 import com.example.experimentkotlin.view.core.components.ExperimentTextField
-import com.example.experimentkotlin.view.core.components.ExperimentButtonSecondary
 
 
 @Preview

@@ -1,6 +1,7 @@
 package com.example.experimentkotlin.view.auth.register
 
 
+import androidx.compose.animation.AnimatedContent
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -17,11 +18,13 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.experimentkotlin.R
 import com.example.experimentkotlin.view.core.components.ExperimentButton
@@ -33,6 +36,28 @@ import com.example.experimentkotlin.view.core.components.ExperimentTextField
 @Preview
 @Composable
 fun RegisterScreen(registerViewModel: RegisterViewModel = viewModel()) {
+
+    val uiState by registerViewModel.uiState.collectAsStateWithLifecycle()
+
+    val title: String
+    val subtitle: String
+    val label: String
+    val changeModeTitle: String
+    when(uiState.isPhoneMode){
+        true -> {
+            title = stringResource(R.string.register_screen_title_phone)
+            subtitle = stringResource(R.string.register_screen_subtitle_phone)
+            label = stringResource(R.string.register_screen_textfield_register_phone)
+            changeModeTitle = stringResource(R.string.register_screen_register_with_email)
+        }
+        false -> {
+            title = stringResource(R.string.register_screen_title_email)
+            subtitle = stringResource(R.string.register_screen_subtitle_email)
+            label = stringResource(R.string.register_screen_textfield_register_email)
+            changeModeTitle = stringResource(R.string.register_screen_register_with_phone)
+        }
+    }
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -59,23 +84,26 @@ fun RegisterScreen(registerViewModel: RegisterViewModel = viewModel()) {
                 .padding(horizontal = 16.dp)
                 .background(MaterialTheme.colorScheme.background)
         ) {
-            ExperimentTextBody(
-                text = stringResource(R.string.register_screen_title_phone),
-                style = MaterialTheme.typography.headlineLarge,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
-            )
+            AnimatedContent(title) { animatedTitle ->
+                ExperimentTextBody(
+                    text = animatedTitle,
+                    style = MaterialTheme.typography.headlineLarge,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+
             Spacer(Modifier.height(4.dp))
             ExperimentTextBody(
-                text = stringResource(R.string.register_screen_subtitle_phone),
+                text = subtitle,
                 style = MaterialTheme.typography.titleSmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
             Spacer(Modifier.height(16.dp))
             ExperimentTextField(
                 modifier = Modifier.fillMaxWidth(),
-                value = "",
-                onValueChange = {},
-                label = stringResource(R.string.register_screen_textfield_register_phone)
+                value = uiState.value,
+                onValueChange = {registerViewModel.onRegisterChanged(it)},
+                label = label
             )
             Spacer(Modifier.height(12.dp))
             ExperimentTextBody(stringResource(R.string.register_screen_body))
@@ -83,13 +111,14 @@ fun RegisterScreen(registerViewModel: RegisterViewModel = viewModel()) {
             ExperimentButton(
                 modifier = Modifier.fillMaxWidth(),
                 onClick = {},
+                enabled = uiState.isRegisterEnabled,
                 text = stringResource(R.string.register_screen_button_next)
             )
             Spacer(Modifier.height(4.dp))
             ExperimentButtonSecondary(
                 modifier = Modifier.fillMaxWidth(),
-                onClick = {},
-                title = stringResource(R.string.register_screen_register_with_email),
+                onClick = {registerViewModel.onChangeMode()},
+                title = changeModeTitle,
                 titleColor = MaterialTheme.colorScheme.onPrimary,
                 border = BorderStroke(1.dp, MaterialTheme.colorScheme.onBackground)
             )

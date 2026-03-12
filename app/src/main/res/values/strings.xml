@@ -8,6 +8,7 @@
     <string name="login_screen_button_login">Iniciar sesión</string>
     <string name="login_screen_text_forgot_password">¿Has olvidado la contraseña?</string>
     <string name="login_screen_button_register">Crear cuenta nueva</string>
+
     <!-- Register screen -->
     <string name="register_screen_title_phone">¿Cual es tu numero Móvil?</string>
     <string name="register_screen_title_email">¿Cual es tu correo electrónico?</string>
