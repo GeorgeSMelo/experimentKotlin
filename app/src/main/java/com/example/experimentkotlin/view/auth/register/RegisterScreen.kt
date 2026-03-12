@@ -28,6 +28,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.experimentkotlin.R
+import com.example.experimentkotlin.view.auth.login.LoginScreen
 import com.example.experimentkotlin.view.core.components.ExperimentButton
 import com.example.experimentkotlin.view.core.components.ExperimentButtonSecondary
 import com.example.experimentkotlin.view.core.components.ExperimentTextBody
@@ -132,4 +133,10 @@ fun RegisterScreen(registerViewModel: RegisterViewModel = viewModel(), navigateB
         }
     }
 
+}
+
+@Preview
+@Composable
+fun RegisterScreenPreview(){
+    RegisterScreen() { }
 }

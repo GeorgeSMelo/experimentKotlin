@@ -74,7 +74,7 @@ fun LoginScreen(loginViewModel: LoginViewModel = viewModel(),
             ExperimentButton(
                 modifier = Modifier.fillMaxWidth(),
                 text = stringResource(R.string.login_screen_button_login),
-                onClick = {},
+                onClick = { loginViewModel.onClickSelected() },
                 enabled = uiState.isLoginEnable,
             )
             TextButton(onClick = { }) {
