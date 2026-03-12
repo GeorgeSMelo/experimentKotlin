@@ -1,13 +1,13 @@
 package com.example.experimentkotlin.domain.usecase
 
-class Login {
+import com.example.experimentkotlin.domain.repository.AuthRepository
+
+class Login(private val authRepository: AuthRepository) {
     operator fun invoke(user: String, password: String){
         if(user.contains("@Outlook.com")){
             return
         }
-        //repository.doLogin(user, password)
-    }
-    fun example(){
-
+        val response = authRepository.doLogin(user, password)
+        
     }
 }
