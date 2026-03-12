@@ -61,14 +61,12 @@ fun LoginScreen(loginViewModel: LoginViewModel = viewModel(),
             Spacer(Modifier.weight(1.3f))
             ExperimentTextField(
                 modifier = Modifier.fillMaxWidth(),
-                shape = RoundedCornerShape(30),
                 value = uiState.email,
                 label = stringResource(R.string.login_screen_textfield_email),
                 onValueChange = { loginViewModel.onEmailChanged(it) })
             Spacer(Modifier.height(12.dp))
             ExperimentTextField(
                 modifier = Modifier.fillMaxWidth(),
-                shape = RoundedCornerShape(30),
                 value = uiState.password,
                 label = stringResource(R.string.login_screen_textfield_password),
                 onValueChange = { loginViewModel.onPasswordChanged(it) })

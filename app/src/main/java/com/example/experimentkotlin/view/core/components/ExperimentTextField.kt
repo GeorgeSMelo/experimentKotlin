@@ -11,7 +11,7 @@ fun ExperimentTextField(
     value: String,
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier,
-    shape: Shape = MaterialTheme.shapes.large,
+    shape: Shape = MaterialTheme.shapes.medium,
     label: String = ""
 ) {
     OutlinedTextField(

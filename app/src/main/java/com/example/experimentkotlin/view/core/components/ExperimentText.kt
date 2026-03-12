@@ -12,7 +12,7 @@ fun ExperimentTextBody(
     text: String,
     modifier: Modifier = Modifier,
     color: Color = MaterialTheme.colorScheme.onBackground,
-    style: TextStyle = MaterialTheme.typography.bodyLarge
+    style: TextStyle = MaterialTheme.typography.bodyMedium
 ) {
     Text(text = text, modifier= modifier, color = color, style = style)
 }

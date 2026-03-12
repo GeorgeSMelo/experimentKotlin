@@ -87,16 +87,16 @@ fun RegisterScreen(registerViewModel: RegisterViewModel = viewModel(), navigateB
         ) {
             AnimatedContent(title) { animatedTitle ->
                 ExperimentTextBody(
+                    modifier = Modifier.fillMaxWidth(),
                     text = animatedTitle,
                     style = MaterialTheme.typography.headlineLarge,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
 
-            Spacer(Modifier.height(4.dp))
+            Spacer(Modifier.height(8.dp))
             ExperimentTextBody(
                 text = subtitle,
-                style = MaterialTheme.typography.titleSmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
             Spacer(Modifier.height(16.dp))
