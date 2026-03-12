@@ -4,6 +4,7 @@ package com.example.experimentkotlin.view.auth.register
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -33,9 +34,8 @@ import com.example.experimentkotlin.view.core.components.ExperimentTextBody
 import com.example.experimentkotlin.view.core.components.ExperimentTextField
 
 @OptIn(ExperimentalMaterial3Api::class)
-@Preview
 @Composable
-fun RegisterScreen(registerViewModel: RegisterViewModel = viewModel()) {
+fun RegisterScreen(registerViewModel: RegisterViewModel = viewModel(), navigateBack:() -> Unit) {
 
     val uiState by registerViewModel.uiState.collectAsStateWithLifecycle()
 
@@ -69,7 +69,8 @@ fun RegisterScreen(registerViewModel: RegisterViewModel = viewModel()) {
                     Icon(
                         imageVector = Icons.Default.ArrowBack,
                         contentDescription = "back",
-                        tint = MaterialTheme.colorScheme.onSurfaceVariant
+                        tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.clickable {navigateBack()}
                     )
 
                 }

@@ -32,10 +32,10 @@ import com.example.experimentkotlin.view.core.components.ExperimentTextBody
 import com.example.experimentkotlin.view.core.components.ExperimentTextField
 
 
-@Preview
 @Composable
 
-fun LoginScreen(loginViewModel: LoginViewModel = viewModel()) {
+fun LoginScreen(loginViewModel: LoginViewModel = viewModel(),
+                navigateToRegister: () -> Unit, ) {
     Scaffold() { padding ->
         val uiState by loginViewModel.uiState.collectAsStateWithLifecycle()
 
@@ -88,7 +88,7 @@ fun LoginScreen(loginViewModel: LoginViewModel = viewModel()) {
             Spacer(Modifier.weight(1f))
             ExperimentButtonSecondary(
                 modifier = Modifier.fillMaxWidth(),
-                onClick = {},
+                onClick = {navigateToRegister()},
                 title = stringResource(R.string.login_screen_button_register)
             )
             Icon(
@@ -104,4 +104,10 @@ fun LoginScreen(loginViewModel: LoginViewModel = viewModel()) {
 
 
     }
+}
+
+@Preview
+@Composable
+fun LoginScreenPreview(){
+    LoginScreen() { }
 }
