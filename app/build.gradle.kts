@@ -65,7 +65,11 @@ dependencies {
     implementation(libs.hilt.navigation)
     ksp(libs.hilt.compiler)
 
-    //TestIplementation por defecto
+    //Retrofit
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.adapter)
+
+    //TestImplementation por defecto
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
