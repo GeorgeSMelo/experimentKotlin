@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.jetbrainsKotlinSerialization)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.hilt)
 }
 
 android {
@@ -56,7 +58,11 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.kotlinx.serialization.json)
-    implementation ("androidx.compose.material:material-icons-extended")
+    implementation (libs.androidx.compose.material.icons.extended)
+
+    //DI
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.compiler)
 
     //TestIplementation por defecto
     testImplementation(libs.junit)

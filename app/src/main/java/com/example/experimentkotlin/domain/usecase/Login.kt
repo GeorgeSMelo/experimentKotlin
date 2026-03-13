@@ -8,6 +8,6 @@ class Login(private val authRepository: AuthRepository) {
             return
         }
         val response = authRepository.doLogin(user, password)
-        
+
     }
 }
