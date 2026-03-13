@@ -1,4 +1,9 @@
 package com.example.experimentkotlin
 
-class experimentKotlinApp {
+import android.app.Application
+import dagger.hilt.android.HiltAndroidApp
+
+@HiltAndroidApp
+class experimentKotlinApp: Application() {
+
 }

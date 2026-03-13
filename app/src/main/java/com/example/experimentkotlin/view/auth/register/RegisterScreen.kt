@@ -25,6 +25,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.experimentkotlin.R
@@ -36,7 +37,7 @@ import com.example.experimentkotlin.view.core.components.ExperimentTextField
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun RegisterScreen(registerViewModel: RegisterViewModel = viewModel(), navigateBack:() -> Unit) {
+fun RegisterScreen(registerViewModel: RegisterViewModel = hiltViewModel(), navigateBack: () -> Unit) {
 
     val uiState by registerViewModel.uiState.collectAsStateWithLifecycle()
 
@@ -44,13 +45,14 @@ fun RegisterScreen(registerViewModel: RegisterViewModel = viewModel(), navigateB
     val subtitle: String
     val label: String
     val changeModeTitle: String
-    when(uiState.isPhoneMode){
+    when (uiState.isPhoneMode) {
         true -> {
             title = stringResource(R.string.register_screen_title_phone)
             subtitle = stringResource(R.string.register_screen_subtitle_phone)
             label = stringResource(R.string.register_screen_textfield_register_phone)
             changeModeTitle = stringResource(R.string.register_screen_register_with_email)
         }
+
         false -> {
             title = stringResource(R.string.register_screen_title_email)
             subtitle = stringResource(R.string.register_screen_subtitle_email)
@@ -71,7 +73,7 @@ fun RegisterScreen(registerViewModel: RegisterViewModel = viewModel(), navigateB
                         imageVector = Icons.Default.ArrowBack,
                         contentDescription = "back",
                         tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                        modifier = Modifier.clickable {navigateBack()}
+                        modifier = Modifier.clickable { navigateBack() }
                     )
 
                 }
@@ -104,7 +106,7 @@ fun RegisterScreen(registerViewModel: RegisterViewModel = viewModel(), navigateB
             ExperimentTextField(
                 modifier = Modifier.fillMaxWidth(),
                 value = uiState.value,
-                onValueChange = {registerViewModel.onRegisterChanged(it)},
+                onValueChange = { registerViewModel.onRegisterChanged(it) },
                 label = label
             )
             Spacer(Modifier.height(12.dp))
@@ -119,17 +121,17 @@ fun RegisterScreen(registerViewModel: RegisterViewModel = viewModel(), navigateB
             Spacer(Modifier.height(4.dp))
             ExperimentButtonSecondary(
                 modifier = Modifier.fillMaxWidth(),
-                onClick = {registerViewModel.onChangeMode()},
+                onClick = { registerViewModel.onChangeMode() },
                 title = changeModeTitle,
                 titleColor = MaterialTheme.colorScheme.onPrimary,
                 border = BorderStroke(1.dp, MaterialTheme.colorScheme.onBackground)
             )
             Spacer(Modifier.weight(1f))
             ExperimentTextBody(
-                    modifier = Modifier.padding(4.dp),
-                    text = stringResource(R.string.register_screen_text_find_my_account),
-                    color = MaterialTheme.colorScheme.primary
-                )
+                modifier = Modifier.padding(4.dp),
+                text = stringResource(R.string.register_screen_text_find_my_account),
+                color = MaterialTheme.colorScheme.primary
+            )
         }
     }
 
@@ -137,6 +139,6 @@ fun RegisterScreen(registerViewModel: RegisterViewModel = viewModel(), navigateB
 
 @Preview
 @Composable
-fun RegisterScreenPreview(){
+fun RegisterScreenPreview() {
     RegisterScreen() { }
 }
