@@ -4,5 +4,5 @@ import com.example.experimentkotlin.domain.entity.UserEntity
 
 
 interface AuthRepository {
-    fun doLogin(user: String, password: String) : UserEntity
+    suspend fun doLogin(user: String, password: String) : List<UserEntity>
 }

@@ -1,5 +1,6 @@
 package com.example.experimentkotlin.view.auth.login
 
+import android.util.Log
 import android.util.Patterns
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -10,10 +11,11 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
-class LoginViewModel @Inject constructor (val login: Login) : ViewModel() {
+class LoginViewModel @Inject constructor(val login: Login) : ViewModel() {
 
     private val _uiState = MutableStateFlow(LoginUiState())
     val uiState: StateFlow<LoginUiState> = _uiState
@@ -32,9 +34,17 @@ class LoginViewModel @Inject constructor (val login: Login) : ViewModel() {
         verifyLogin()
     }
 
-    fun onClickSelected(){
+    fun onClickSelected() {
         viewModelScope.launch(Dispatchers.IO) {
-            login(_uiState.value.email, _uiState.value.password)
+            val response = login(_uiState.value.email, _uiState.value.password)
+
+            withContext(Dispatchers.Main) {
+                if (response !== null) {
+                    Log.i("LOGIN", "SUCCESS ${response.name}")
+                }else{
+                    Log.i("LOGIN", "ERROR")
+                }
+            }
         }
     }
 

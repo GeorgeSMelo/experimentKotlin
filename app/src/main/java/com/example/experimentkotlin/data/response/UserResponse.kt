@@ -4,13 +4,15 @@ import android.provider.ContactsContract
 import com.example.experimentkotlin.domain.entity.UserEntity
 import com.example.experimentkotlin.domain.entity.UserMode
 import com.example.experimentkotlin.domain.entity.UserMode.REGULAR_USER
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class UserResponse (
     val userId: String,
     val name: String,
     val nickname: String,
-    val followers: Int,
-    val following: List<String>,
+    val followers: Int = 0,
+    val following: List<String> = emptyList(),
     val userType:Int
 )
 
